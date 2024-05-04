@@ -20,7 +20,7 @@ The colors of this programs taken from [Here](https://www.rapidtables.com/web/co
     g++ -I src/include -L src/lib -o TASK102 TASK102.cpp -lmingw32 -lSDL2main -lSDL2
     g++ -I src/include -L src/lib -o TASK103 TASK103.cpp -lmingw32 -lSDL2main -lSDL2
 
-I have already provided the Makefile. You can use make package to compile all the files with sing command.
+I have already provided the Makefile. You can use make package to compile all the files with single command.
 
     make
 4. Run the compiled executable:
@@ -31,7 +31,7 @@ I have already provided the Makefile. You can use make package to compile all th
 
 ## Usage
 
-### TASK1011
+### TASK101
 
 Upon running the `TASK101` program, a window titled "Circle drawing" will appear, displaying a red circle at the center. The window will remain open until you close it manually.
 
