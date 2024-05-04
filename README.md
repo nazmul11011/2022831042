@@ -21,8 +21,7 @@ The colors of this programs taken from [Here](https://www.rapidtables.com/web/co
     g++ -I src/include -L src/lib -o TASK103 TASK103.cpp -lmingw32 -lSDL2main -lSDL2
 
 I have already provided the Makefile. You can use make package to compile all the files with sing command.
-    ```bash
-    
+
     make
 4. Run the compiled executable:
     ```bash
