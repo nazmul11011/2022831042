@@ -22,6 +22,7 @@ The colors of this programs taken from [Here](https://www.rapidtables.com/web/co
 
 I have already provided the Makefile. You can use make package to compile all the files with sing command.
     ```bash
+    
     make
 4. Run the compiled executable:
     ```bash
