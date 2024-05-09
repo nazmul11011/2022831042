@@ -18,7 +18,7 @@ int main(int argc, char ** argv) {
 
     // Initialization
     SDL_Init(SDL_INIT_EVERYTHING);
-    SDL_CreateWindowAndRenderer(640, 480, 0, &window, &renderer);
+    SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, 0, &window, &renderer);
 
     // Main Loop
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
