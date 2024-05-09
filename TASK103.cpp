@@ -6,26 +6,32 @@ const int SCREEN_HEIGHT = 480;
 
 int main(int argc, char **argv) {
 
+    // Window Event Initialization
     bool quit = false;
     SDL_Event event;
 
+    // Window and Renderer Initialization
     SDL_Window *window = NULL;
     SDL_Renderer *renderer = NULL;
 
+    // Initialization
     SDL_Init(SDL_INIT_VIDEO);
     SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, 0, &window, &renderer);
 
+    // Main Loop
     int radius = 40;
     int centerX = radius;
     int centerY = SCREEN_HEIGHT / 2;
     int speed = 2;
 
+    // 2nd Circle
     int centerX2 = SCREEN_WIDTH / 2;
     int centerY2 = radius;
     int velX2 = 0;
     int velY2 = 0;
     int speed2 = 5;
 
+    // Event Loop
     while (!quit) {
         while (SDL_PollEvent(&event)) {
             switch (event.type) {
@@ -51,14 +57,17 @@ int main(int argc, char **argv) {
             }
         }
 
+        // Circle Movement
         centerX += speed;
         if (centerX > SCREEN_WIDTH + radius) {
             centerX = -radius;
         }
 
+        // 2nd Circle Movement
         centerX2 += velX2;
         centerY2 += velY2;
 
+        // Boundary Checking
         if (centerX2 < radius) {
             centerX2 = radius;
             velX2 = -velX2;
@@ -74,6 +83,7 @@ int main(int argc, char **argv) {
             velY2 = -velY2;
         }
 
+        // Clear Screen
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
 
@@ -83,11 +93,13 @@ int main(int argc, char **argv) {
         double distance = sqrt(dx * dx + dy * dy);
         bool collided = distance < (2 * radius);
 
+        // Collision Response
         if (collided) {
             velX2 = -velX2;
             velY2 = -velY2;
         }
 
+        // Circle Drawing
         int colorR = collided ? 255 : 255;
         int colorG = collided ? 255 : 0;
         int colorB = collided ? 0 : 0;
@@ -116,11 +128,11 @@ int main(int argc, char **argv) {
             }
         }
 
+        // Update Screen
         SDL_RenderPresent(renderer);
-
-        //SDL_Delay(10);
     }
 
+    // Clean Up
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
