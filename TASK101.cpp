@@ -1,16 +1,21 @@
 #include <SDL2/SDL.h>
 
-#define SCREEN_WIDTH 600
-#define SCREEN_HEIGHT 400
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 480;
 
-int main(int argc, char* args[]) {
-    SDL_Init(SDL_INIT_VIDEO);
+int main(int argc, char ** argv) {
 
-    SDL_Window* window = SDL_CreateWindow("Circle drawing", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    bool quit = false;
+    SDL_Event event;
 
-    int centerX = 300;
-    int centerY = 200;
+    SDL_Window * window=NULL;
+    SDL_Renderer * renderer=NULL;
+
+    SDL_Init(SDL_INIT_EVERYTHING);
+    SDL_CreateWindowAndRenderer(640, 480, 0, &window, &renderer);
+
+    int centerX = SCREEN_WIDTH/2;
+    int centerY = SCREEN_HEIGHT/2;
     int radius = 100;
 
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Red color
@@ -25,9 +30,6 @@ int main(int argc, char* args[]) {
     }
 
     SDL_RenderPresent(renderer);
-
-    bool quit = false;
-    SDL_Event event;
 
     while (!quit) {
         while (SDL_PollEvent(&event)) {
